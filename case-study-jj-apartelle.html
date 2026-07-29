@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — AI Comment-to-Booking Automation | Neil Jun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0c;
+    --bg-2:#0f0f11;
+    --card:#141416;
+    --card-2:#17171a;
+    --border:#26262b;
+    --border-2:#33333a;
+    --text:#eeeee9;
+    --muted:#9a9a94;
+    --muted-2:#6f6f6a;
+    --gold:#e4b23c;
+    --gold-soft:#caa04a;
+    --gold-dim:rgba(228,178,60,0.12);
+    --green:#4caf72;
+    --r:14px;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;letter-spacing:-0.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);display:inline-block}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,11,12,0.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:'Sora',sans-serif;font-weight:700;font-size:19px}
+  .brand span{color:var(--gold)}
+  .back{color:var(--muted);font-size:14px;font-weight:500;transition:color .2s}
+  .back:hover{color:var(--gold)}
+
+  /* hero */
+  header{padding:72px 0 40px;border-bottom:1px solid var(--border)}
+  .status{
+    display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+    font-size:13px;color:var(--muted);font-weight:500;
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(76,175,114,0.15)}
+  h1{font-size:clamp(2.1rem,6vw,3.6rem);font-weight:800;margin:20px 0 8px}
+  .client{font-size:clamp(1rem,2.4vw,1.25rem);color:var(--gold-soft);font-weight:600;font-family:'Sora',sans-serif}
+  .lede{color:var(--muted);font-size:1.08rem;max-width:640px;margin-top:20px}
+
+  /* facts */
+  .facts{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;
+  }
+  .fact{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+  .fact .k{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+  .fact .v{font-family:'Sora',sans-serif;font-weight:600;font-size:15px;margin-top:6px}
+
+  /* sections */
+  section{padding:56px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;margin:16px 0 20px}
+  section p{color:var(--muted);max-width:680px;margin-bottom:16px}
+  section p strong{color:var(--text);font-weight:600}
+
+  /* flow */
+  .flow{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+  .step{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+    padding:18px 20px;position:relative;
+  }
+  .step .num{
+    flex:none;width:30px;height:30px;border-radius:9px;
+    background:var(--gold-dim);color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:14px;
+  }
+  .step .body h3{font-size:16px;font-weight:600;margin-bottom:3px}
+  .step .body p{font-size:14.5px;margin:0;color:var(--muted)}
+
+  /* branch cards */
+  .branch{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .bcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;border-top:2px solid var(--border-2)}
+  .bcard.book{border-top-color:var(--gold)}
+  .bcard.review{border-top-color:var(--green)}
+  .bcard.other{border-top-color:var(--muted-2)}
+  .bcard .tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--muted-2)}
+  .bcard h3{font-size:16px;font-weight:600;margin:8px 0}
+  .bcard p{font-size:14px;color:var(--muted);margin:0}
+
+  /* highlights */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .hl{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+  .hl h3{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--text)}
+  .hl p{font-size:14px;color:var(--muted);margin:0}
+
+  /* result stats */
+  .rstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  .rstat{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;text-align:center}
+  .rstat .big{font-family:'Sora',sans-serif;font-weight:800;font-size:1.6rem;color:var(--gold)}
+  .rstat .lbl{font-size:13px;color:var(--muted);margin-top:6px}
+
+  /* tech */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .pill{
+    font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;
+    background:var(--gold-dim);color:var(--gold);border:1px solid rgba(228,178,60,0.25);
+  }
+
+  /* cta */
+  .cta{text-align:center;padding:72px 24px}
+  .cta h2{margin-bottom:14px}
+  .cta p{margin:0 auto 26px;color:var(--muted)}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    font-family:'Sora',sans-serif;font-weight:600;font-size:15px;
+    padding:13px 24px;border-radius:10px;transition:transform .15s,opacity .2s;
+  }
+  .btn.primary{background:var(--gold);color:#1a1400}
+  .btn.ghost{border:1px solid var(--border-2);color:var(--text)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  footer{padding:34px 0;color:var(--muted-2);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  @media (max-width:760px){
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .branch{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+    .rstats{grid-template-columns:1fr}
+    header{padding:48px 0 32px}
+    section{padding:44px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand">Neil Jun<span>.</span></a>
+    <a href="index.html#projects" class="back">← Back to projects</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Case Study · Automation</div>
+    <h1>AI Comment-to-Booking Automation</h1>
+    <div class="client">J&amp;J Apartelle — Surigao City, Philippines</div>
+    <p class="lede">A 24/7 system that reads Facebook comments in Bisaya and Taglish, understands what each person actually wants, and responds the right way — turning a public comment into a private booking conversation without anyone lifting a finger.</p>
+    <div class="status"><span class="dot"></span> Live in production · handling real guests</div>
+
+    <div class="facts">
+      <div class="fact"><div class="k">Role</div><div class="v">Automation Developer</div></div>
+      <div class="fact"><div class="k">Client</div><div class="v">Real rental business</div></div>
+      <div class="fact"><div class="k">Core stack</div><div class="v">n8n · OpenAI</div></div>
+      <div class="fact"><div class="k">Status</div><div class="v">Deployed &amp; running</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">The problem</div>
+    <h2>Comments were coming in — replies weren't going out</h2>
+    <p>J&amp;J Apartelle gets most of its booking interest as comments on Facebook posts. But answering them was manual and slow, and the page's auto-reply sent the <strong>same generic "message us on Messenger" response to everyone</strong> — including past guests who were leaving glowing reviews.</p>
+    <p>The result: potential bookings sat unanswered for hours, and happy guests praising their stay got a cold sales message back, making the page look like it wasn't even reading its own comments.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">The solution</div>
+    <h2>An automation that reads intent, then acts</h2>
+    <p>I built an end-to-end workflow that fires the moment anyone comments, understands the comment in the guest's own language, and routes it down the right path — all automatically.</p>
+
+    <div class="flow">
+      <div class="step"><div class="num">1</div><div class="body"><h3>Comment detected</h3><p>A new comment on any page post triggers the workflow instantly through the Facebook Graph API and webhooks.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="body"><h3>AI reads the intent</h3><p>An OpenAI classifier reads the comment in Bisaya, Cebuano, or Taglish and decides what the person actually wants.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="body"><h3>Routed to the right response</h3><p>Based on intent, the comment is sent down one of three paths — booking, review, or everything else.</p></div></div>
+    </div>
+
+    <div class="branch">
+      <div class="bcard book">
+        <div class="tag">Booking question</div>
+        <h3>Public reply + private DM</h3>
+        <p>Posts a public reply, then slides into the person's Messenger with a booking message that hands off to an AI booking assistant for dates, availability, and rates.</p>
+      </div>
+      <div class="bcard review">
+        <div class="tag">Review / thank-you</div>
+        <h3>Warm, personalized reply</h3>
+        <p>Writes a genuine thank-you that references what the guest praised — no sales pitch, no DM. Past guests feel seen.</p>
+      </div>
+      <div class="bcard other">
+        <div class="tag">Everything else</div>
+        <h3>Left alone</h3>
+        <p>Tagged friends, lone emojis, and off-topic comments are correctly ignored instead of getting a robotic reply.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">Engineering details</div>
+    <h2>Built to run unattended</h2>
+    <div class="grid2">
+      <div class="hl"><h3>Bilingual understanding</h3><p>The classifier reads mixed Bisaya, Cebuano, and Taglish reliably — where simple keyword rules would fail, because words like "salamat" appear in both thank-yous and inquiries.</p></div>
+      <div class="hl"><h3>Fail-safe by design</h3><p>If the AI ever returns something unexpected, the workflow falls back to the booking funnel instead of going silent or erroring — so a lead is never dropped.</p></div>
+      <div class="hl"><h3>Tested before going live</h3><p>Every path was verified end-to-end against real comment data before deployment, catching a response-parsing bug that would have misrouted reviews.</p></div>
+      <div class="hl"><h3>Non-intrusive integration</h3><p>The comment handler branches off the existing Messenger booking bot without touching or slowing down live payment and booking traffic.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">The result</div>
+    <h2>A hands-off comment-to-booking funnel</h2>
+    <div class="rstats">
+      <div class="rstat"><div class="big">24/7</div><div class="lbl">Runs automatically, no manual replies</div></div>
+      <div class="rstat"><div class="big">Instant</div><div class="lbl">Booking inquiries get a private DM in seconds</div></div>
+      <div class="rstat"><div class="big">3 paths</div><div class="lbl">Bookings, reviews, and noise handled correctly</div></div>
+    </div>
+    <p style="margin-top:24px">Real customers now receive a private booking message the moment they comment, and past guests get genuine thank-yous instead of a canned line. The whole funnel — comment, classify, reply, DM, hand-off to the booking assistant — runs without anyone watching it.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">Tools &amp; skills</div>
+    <h2>What made it work</h2>
+    <div class="tags">
+      <span class="pill">n8n</span>
+      <span class="pill">OpenAI API</span>
+      <span class="pill">AI prompt engineering</span>
+      <span class="pill">Facebook Graph API</span>
+      <span class="pill">Messenger Platform</span>
+      <span class="pill">Webhooks</span>
+      <span class="pill">API integration</span>
+      <span class="pill">Workflow automation</span>
+    </div>
+  </div>
+</section>
+
+<div class="cta reveal">
+  <div class="eyebrow" style="justify-content:center">Get in touch</div>
+  <h2>Want something like this for your business?</h2>
+  <p>If you're drowning in manual replies or repetitive work, I can build an automation that handles it for you.</p>
+  <div class="btns">
+    <a href="index.html#contact" class="btn primary">Let's work together →</a>
+    <a href="index.html#projects" class="btn ghost">See more projects</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Neil Jun Maglunsod — Built with care.</span>
+    <span>Surigao City, Philippines</span>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

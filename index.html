@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neil Jun Maglunsod — AI Automation Freelancer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --bg2: #141414;
+      --bg3: #1a1a1a;
+      --gold: #c9a227;
+      --gold-light: #e8c453;
+      --gold-dim: rgba(201, 162, 39, 0.12);
+      --text: #e8e8e8;
+      --text-muted: #888;
+      --border: rgba(201, 162, 39, 0.18);
+      --radius: 8px;
+      --transition: 0.3s ease;
+      --max-width: 1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(13, 13, 13, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.3px;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--transition), background var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); background: var(--gold-dim); }
+
+    /* ── Section base ── */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.65rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    .gold-line { width: 44px; height: 3px; background: var(--gold); margin-bottom: 1.5rem; border-radius: 2px; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -250px;
+      right: -250px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+      padding-top: 64px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--gold);
+      letter-spacing: 1.2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1.5px;
+    }
+
+    h1 .accent { color: var(--gold); }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.2rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+      letter-spacing: 0.2px;
+    }
+
+    .btn-primary { background: var(--gold); color: #0d0d0d; }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201, 162, 39, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── About ── */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.85;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 0; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.9rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      transition: border-color var(--transition);
+    }
+
+    .skill-item:hover { border-color: var(--gold); }
+
+    .skill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* ── Services ── */
+    #services { background: var(--bg); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover { border-color: rgba(201, 162, 39, 0.4); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon { font-size: 1.9rem; margin-bottom: 1rem; }
+
+    .service-card h3 { font-size: 1.05rem; margin-bottom: 0.65rem; }
+
+    .service-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.75; }
+
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.25rem; }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.22rem 0.6rem;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--gold);
+      letter-spacing: 0.2px;
+    }
+
+    /* ── Projects ── */
+    #projects { background: var(--bg2); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: rgba(201, 162, 39, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    }
+
+    .project-header {
+      padding: 1.75rem 1.75rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-emoji { font-size: 1.9rem; }
+
+    .project-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      padding: 0.28rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .project-body { padding: 1.1rem 1.75rem 1.75rem; }
+    .project-body h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .project-client { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.3px; margin-bottom: 0.6rem; }
+    .project-body p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.75; margin-bottom: 1rem; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+    /* Featured project (spans full width, highlighted) */
+    .project-card.featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--bg3), rgba(201, 162, 39, 0.05));
+      border-color: rgba(201, 162, 39, 0.4);
+    }
+
+    .project-card.featured .project-body { padding: 1.4rem 2rem 2rem; }
+    .project-card.featured .project-body h3 { font-size: 1.25rem; }
+    .project-card.featured .project-body p { font-size: 0.92rem; max-width: 720px; }
+
+    .featured-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0d0d0d;
+      background: var(--gold);
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .project-link.live-real { color: var(--gold); border-color: rgba(201, 162, 39, 0.5); cursor: pointer; }
+    .project-link.live-real:hover { background: var(--gold-dim); }
+
+    /* ── Contact ── */
+    #contact { background: var(--bg); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color var(--transition);
+    }
+
+    .contact-item:hover { border-color: var(--gold); }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; }
+    .contact-item a, .contact-item span { font-size: 0.875rem; color: var(--text); text-decoration: none; }
+    .contact-item a:hover { color: var(--gold); }
+
+    /* ── Form ── */
+    form { display: flex; flex-direction: column; gap: 0.85rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+
+    input, textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.8rem 1rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    input:focus, textarea:focus { border-color: var(--gold); }
+    input::placeholder, textarea::placeholder { color: var(--text-muted); }
+    textarea { resize: vertical; min-height: 130px; }
+
+    .form-note { font-size: 0.78rem; color: var(--text-muted); min-height: 1.2em; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── Fade-in ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4.5rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      h1 { font-size: 2.6rem; letter-spacing: -0.8px; }
+      .hero-stats { gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 440px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Neil Jun.</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about"    onclick="closeMobile()">About</a>
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#projects" onclick="closeMobile()">Projects</a>
+    <a href="#contact"  onclick="closeMobile()">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI Automation Freelancer &nbsp;·&nbsp; Surigao City, Philippines</div>
+    <h1>Hi, I'm <span class="accent">Neil Jun</span>.<br>I build AI that<br>works for you.</h1>
+    <p class="hero-desc">I help solopreneurs and small businesses automate repetitive workflows, deploy intelligent chatbots, and integrate AI into their tools — so they can focus on what actually matters.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Let's Work Together &rarr;</a>
+      <a href="#projects" class="btn btn-outline">See My Work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Live Systems</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Business Clients</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <div class="section-tag">About Me</div>
+        <h2>Turning manual work into intelligent automation</h2>
+        <div class="gold-line"></div>
+        <p>I'm Neil Jun Maglunsod, an AI automation specialist based in Surigao City, Philippines. I work with clients who are tired of repetitive, time-consuming tasks and want smart systems that run on autopilot.</p>
+        <p>My background spans workflow automation, AI/ML integrations, and API engineering. I bridge the gap between cutting-edge AI tools and practical business needs — delivering solutions that are powerful yet easy to maintain.</p>
+        <p>When I'm not building automations, I'm keeping up with the latest in the AI space so my clients always get the best tools available.</p>
+        <div style="margin-top: 1.75rem;">
+          <a href="#contact" class="btn btn-primary">Work With Me &rarr;</a>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">Tools &amp; Technologies</div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">What I work with</p>
+        <div class="skills-grid">
+          <div class="skill-item"><span class="skill-dot"></span>Make (Integromat)</div>
+          <div class="skill-item"><span class="skill-dot"></span>n8n</div>
+          <div class="skill-item"><span class="skill-dot"></span>Zapier</div>
+          <div class="skill-item"><span class="skill-dot"></span>OpenAI API</div>
+          <div class="skill-item"><span class="skill-dot"></span>Claude API</div>
+          <div class="skill-item"><span class="skill-dot"></span>LangChain</div>
+          <div class="skill-item"><span class="skill-dot"></span>Airtable</div>
+          <div class="skill-item"><span class="skill-dot"></span>Notion API</div>
+          <div class="skill-item"><span class="skill-dot"></span>Python</div>
+          <div class="skill-item"><span class="skill-dot"></span>JavaScript</div>
+          <div class="skill-item"><span class="skill-dot"></span>REST APIs &amp; Webhooks</div>
+          <div class="skill-item"><span class="skill-dot"></span>Prompt Engineering</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-tag">What I Do</div>
+      <h2>Services built for real business impact</h2>
+      <p class="section-sub">From automating repetitive tasks to deploying custom AI assistants, I deliver end-to-end solutions tailored to your specific workflow.</p>
+    </div>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Workflow Automation</h3>
+        <p>Eliminate repetitive manual tasks by connecting your apps and automating multi-step processes — from data entry to report generation, fully hands-free.</p>
+        <div class="service-tags">
+          <span class="tag">Make</span><span class="tag">n8n</span><span class="tag">Zapier</span><span class="tag">Webhooks</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI Chatbots &amp; Assistants</h3>
+        <p>Custom AI chatbots trained on your business data — for customer support, internal Q&amp;A, lead qualification, or any role that benefits from intelligent, instant responses.</p>
+        <div class="service-tags">
+          <span class="tag">OpenAI</span><span class="tag">Claude</span><span class="tag">RAG</span><span class="tag">LangChain</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <h3>API &amp; App Integrations</h3>
+        <p>Connect tools that don't talk to each other. I build custom API integrations so your CRM, project manager, email, and other tools work as one unified system.</p>
+        <div class="service-tags">
+          <span class="tag">REST APIs</span><span class="tag">Python</span><span class="tag">Airtable</span><span class="tag">Notion</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>AI-Powered Data Processing</h3>
+        <p>Transform raw data into structured insights automatically. I build pipelines that extract, classify, summarize, and route information using AI — at scale.</p>
+        <div class="service-tags">
+          <span class="tag">GPT-4o</span><span class="tag">Pipelines</span><span class="tag">Airtable</span><span class="tag">Sheets</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✍️</div>
+        <h3>AI Content Automation</h3>
+        <p>Automate content drafting, social media posting, email campaigns, and SEO workflows with AI — maintaining your voice while saving hours every week.</p>
+        <div class="service-tags">
+          <span class="tag">GPT-4o</span><span class="tag">Make</span><span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>AI Strategy Consulting</h3>
+        <p>Not sure where to start with AI? I'll audit your current workflow, identify high-leverage automation opportunities, and give you a clear roadmap to implement them.</p>
+        <div class="service-tags">
+          <span class="tag">Workflow Audit</span><span class="tag">Roadmap</span><span class="tag">Implementation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-tag">My Work</div>
+      <h2>Recent projects</h2>
+      <p class="section-sub">A selection of automation systems and AI tools I've built for real clients and personal projects.</p>
+    </div>
+    <div class="projects-grid fade-in">
+      <div class="project-card featured">
+        <div class="project-header">
+          <div class="project-emoji">🤖</div>
+          <a href="case-study-jj-apartelle.html" class="project-link live-real">Read case study &rarr;</a>
+        </div>
+        <div class="project-body">
+          <span class="featured-badge">Featured</span>
+          <h3 style="margin-top:0.7rem;">AI Comment-to-Booking Automation</h3>
+          <div class="project-client">J&amp;J Apartelle — Surigao City</div>
+          <p>A 24/7 automation that reads Facebook comments in Bisaya &amp; Taglish, tells booking questions apart from reviews, and responds the right way. Booking inquiries get a public reply plus a private Messenger DM that hands off to an AI booking assistant; happy guests get a warm personalized thank-you. Built to fail safe, and live in production handling real guests.</p>
+          <div class="project-stack">
+            <span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Facebook Graph API</span><span class="tag">Messenger</span><span class="tag">Webhooks</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">🏨</div>
+          <a href="https://jandj-apartelle.onrender.com" target="_blank" rel="noopener" class="project-link live-real">Live &rarr;</a>
+        </div>
+        <div class="project-body">
+          <h3>J&amp;J Apartelle — Management System</h3>
+          <p>Full property management system for a real apartelle business. Tracks 4 rooms, guest check-ins/outs, monthly income &amp; expenses, availability calendar, and reports. Currently live and used daily.</p>
+          <div class="project-stack">
+            <span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">💰</div>
+          <span class="project-link">Live</span>
+        </div>
+        <div class="project-body">
+          <h3>Payroll Management App</h3>
+          <p>Payroll management system built for Colorado General Services. Handles employee payroll processing and records.</p>
+          <div class="project-stack">
+            <span class="tag">Next.js</span><span class="tag">Supabase</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-emoji">📒</div>
+          <span class="project-link">Live</span>
+        </div>
+        <div class="project-body">
+          <h3>Bookkeeping App</h3>
+          <p>Bookkeeping and financial tracking application built for small businesses in the Philippines.</p>
+          <div class="project-stack">
+            <span class="tag">Claude Code</span><span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-tag">Get In Touch</div>
+      <h2>Let's build something together</h2>
+      <p class="section-sub">Have a workflow to automate or an AI idea to explore? I'd love to hear about it. I'll get back to you within 24 hours.</p>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <a href="mailto:neiljunmaglunsod@gmail.com">neiljunmaglunsod@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <span>Surigao City, Philippines</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🟢</div>
+          <div>
+            <div class="contact-label">Availability</div>
+            <span>Open to new projects</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <a href="https://wa.me/639103013416?text=Hi%20Neil%2C%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20working%20with%20you." target="_blank" rel="noopener">Message me &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <input type="text"  name="name"  placeholder="Your Name"      required>
+          <input type="email" name="email" placeholder="Email Address"  required>
+        </div>
+        <input type="text" name="subject" placeholder="Subject (e.g. I need a chatbot for my business)">
+        <textarea name="message" placeholder="Tell me about your project — what do you want to automate?" required></textarea>
+        <button type="submit" class="btn btn-primary" style="width: fit-content;" id="submit-btn">Send Message &rarr;</button>
+        <p class="form-note" id="form-status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">&copy; 2026 Neil Jun Maglunsod &mdash; Built with care.</div>
+    <div class="footer-links">
+      <a href="mailto:neiljunmaglunsod@gmail.com">Email</a>
+      <a href="https://wa.me/639103013416" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/neiljunmaglunsod/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/neiljunmaglunsod-rgb" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const scrollSpy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          const active = link.getAttribute('href') === '#' + entry.target.id;
+          link.classList.toggle('active', active);
+        });
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(s => scrollSpy.observe(s));
+
+  // Contact form — submits to Netlify Forms via AJAX, keeps in-page confirmation
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form   = e.target;
+    const btn    = document.getElementById('submit-btn');
+    const status = document.getElementById('form-status');
+    btn.disabled    = true;
+    btn.textContent = 'Sending…';
+
+    const data = new URLSearchParams(new FormData(form)).toString();
+    fetch('https://n8n-q6ls.srv1820828.hstgr.cloud/webhook/portfolio-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data
+    }).catch(() => {});
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data
+    })
+    .then(() => {
+      status.textContent = '✓ Message sent! I’ll get back to you within 24 hours.';
+      status.style.color = 'var(--gold)';
+      form.reset();
+    })
+    .catch(() => {
+      status.textContent = '✗ Something went wrong. Please email me directly instead.';
+      status.style.color = '#e07a5f';
+    })
+    .finally(() => {
+      btn.disabled    = false;
+      btn.textContent = 'Send Message →';
+    });
+  }
+</script>
+
+</body>
+</html>
