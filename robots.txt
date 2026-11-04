@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://neiljun-automation.netlify.app/sitemap.xml
