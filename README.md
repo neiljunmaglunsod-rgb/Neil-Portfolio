@@ -1,37 +1,20 @@
-# Neil Jun — Portfolio
+# Neil Jun Maglunsod - Portfolio
 
-Personal freelance portfolio (single-page site) + a case study page.
+Static portfolio site for an AI Automation & GoHighLevel Specialist, hosted on Netlify.
+
+Live site: https://neiljun-automation.netlify.app/
 
 ## Files
-- `index.html` — the main portfolio page
-- `case-study-jj-apartelle.html` — deep-dive case study, linked from the featured project
-- `README.md` — this file
 
-## Open in VS Code
-1. Open VS Code.
-2. **File → Open Folder…** and choose this `neil-portfolio` folder.
-3. To preview: right-click `index.html` → **Open with Live Server**
-   (install the "Live Server" extension first), or just double-click
-   `index.html` to open it in your browser.
+- `index.html` - main page
+- `case-study-*.html` - project case studies
+- `Neil_Jun_Maglunsod_Resume.pdf` - resume download
+- `robots.txt`, `sitemap.xml` - search engine files
 
-## Before you publish — quick to-dos
-Search the files for `TODO` and fill these in:
-- **Upwork URL** — in `index.html` (footer + contact card)
-- **LinkedIn URL** — in `index.html` (footer)
+## Preview
 
-GitHub is already linked to `github.com/neiljunmaglunsod-rgb`.
-
-## Deploy to Netlify (drag & drop)
-1. Go to https://app.netlify.com → your site → **Deploys**.
-2. Drag this whole `neil-portfolio` folder onto the drop zone.
-3. It goes live in seconds.
+Open the folder in VS Code and use the Live Server extension, or open `index.html` in a browser. The contact form can only be tested on Netlify.
 
 ## Contact form
-The form uses **Netlify Forms** (free). Once deployed to Netlify,
-submissions appear under your site's **Forms** tab, and you can set up
-email notifications in **Site settings → Forms → Notifications**.
 
-## Recommended next step (so you never lose the folder again)
-Push this folder to a GitHub repo, then in Netlify:
-**Site configuration → Build & deploy → Link repository.**
-After that, editing in VS Code + pushing to GitHub auto-deploys the site.
+The form posts to Netlify Forms and to an n8n webhook. A success message appears only when Netlify returns a 2xx status, or the webhook returns JSON with `"messageSaved": true`. Netlify form detection must be enabled for the site.

@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neil Jun Maglunsod — AI Automation Freelancer</title>
+  <title>Neil Jun Maglunsod | AI Automation &amp; GoHighLevel Specialist</title>
+  <meta name="description" content="n8n workflows, GoHighLevel CRM automation, AI chatbots and API integrations by Neil Jun Maglunsod, Surigao City, Philippines. Open to remote roles.">
+  <link rel="canonical" href="https://neiljun-automation.netlify.app/">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Neil Jun Maglunsod | AI Automation &amp; GoHighLevel Specialist">
+  <meta property="og:description" content="n8n workflows, GoHighLevel CRM automation, AI chatbots and API integrations, with case studies.">
+  <meta property="og:url" content="https://neiljun-automation.netlify.app/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0d'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23c9a227'%3EN%3C/text%3E%3C/svg%3E">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Neil Jun Maglunsod","jobTitle":"AI Automation & GoHighLevel Specialist","url":"https://neiljun-automation.netlify.app/","address":{"@type":"PostalAddress","addressLocality":"Surigao City","addressCountry":"PH"},"sameAs":["https://www.linkedin.com/in/neiljunmaglunsod/","https://github.com/neiljunmaglunsod-rgb"]}</script>
+  <noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -213,7 +223,7 @@
     }
 
     h1 {
-      font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+      font-size: clamp(2.5rem, 6.2vw, 4.5rem);
       font-weight: 800;
       line-height: 1.08;
       margin-bottom: 1.5rem;
@@ -225,7 +235,7 @@
     .hero-desc {
       font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 500px;
+      max-width: 580px;
       margin-bottom: 2.5rem;
       line-height: 1.8;
     }
@@ -364,7 +374,7 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
     }
 
@@ -415,7 +425,7 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
     }
 
@@ -524,7 +534,7 @@
     }
 
     .contact-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; }
-    .contact-item a, .contact-item span { font-size: 0.875rem; color: var(--text); text-decoration: none; }
+    .contact-item a, .contact-item span { font-size: 0.875rem; color: var(--text); text-decoration: none; overflow-wrap: anywhere; }
     .contact-item a:hover { color: var(--gold); }
 
     /* ── Form ── */
@@ -549,7 +559,14 @@
     input::placeholder, textarea::placeholder { color: var(--text-muted); }
     textarea { resize: vertical; min-height: 130px; }
 
-    .form-note { font-size: 0.78rem; color: var(--text-muted); min-height: 1.2em; }
+    .form-note { font-size: 0.85rem; color: var(--text-muted); min-height: 1.2em; }
+    .form-note a { color: var(--gold-light); }
+    .field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+    .field label { font-size: 0.8rem; color: var(--text); }
+    .field .optional { color: var(--text-muted); }
+    .field-error { font-size: 0.78rem; color: #f0957c; min-height: 0; }
+    input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #f0957c; }
+    button:disabled { opacity: 0.7; cursor: wait; }
 
     /* ── Footer ── */
     footer {
@@ -570,18 +587,45 @@
 
     .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
 
-    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color var(--transition); }
     .footer-links a:hover { color: var(--gold); }
+
+    /* ── Portfolio additions ── */
+    .skip-link { position: absolute; left: 1rem; top: -60px; z-index: 200; background: var(--gold); color: #0d0d0d; padding: 0.6rem 1rem; border-radius: var(--radius); font-weight: 600; }
+    .skip-link:focus { top: 0.6rem; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+    .stat-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.9rem; }
+    .skills-note { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .service-proof { font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; }
+    .service-proof a { color: var(--gold); }
+    .project-link.status { cursor: default; white-space: nowrap; }
+    .project-facts { margin-bottom: 1rem; }
+    .project-facts dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+    .project-facts dd { color: var(--text-muted); font-size: 0.86rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    .project-card.featured .project-facts { max-width: 760px; }
+    .project-actions { margin-top: 1.1rem; }
+    .project-actions a { color: var(--gold); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    .project-actions a:hover { color: var(--gold-light); text-decoration: underline; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    @media (max-height: 820px) { .scroll-hint { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .scroll-hint { animation: none; }
+      .fade-in { opacity: 1; transform: none; transition: none; }
+      .btn:hover, .service-card:hover, .project-card:hover { transform: none; }
+    }
 
     /* ── Fade-in ── */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
     /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .project-actions a, .service-proof a, .contact-item a, .footer-links a { display: inline-block; padding: 6px 0; }
+    }
     @media (max-width: 900px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -609,8 +653,10 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <!-- Navigation -->
-<nav>
+<nav aria-label="Main">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">Neil Jun.</a>
     <ul class="nav-links" id="nav-links">
@@ -619,7 +665,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -631,30 +677,32 @@
   </div>
 </nav>
 
+<main id="main">
 <!-- Hero -->
 <section id="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow">AI Automation Freelancer &nbsp;·&nbsp; Surigao City, Philippines</div>
-    <h1>Hi, I'm <span class="accent">Neil Jun</span>.<br>I build AI that<br>works for you.</h1>
-    <p class="hero-desc">I help solopreneurs and small businesses automate repetitive workflows, deploy intelligent chatbots, and integrate AI into their tools — so they can focus on what actually matters.</p>
+    <div class="hero-eyebrow">AI Automation &amp; GoHighLevel Specialist &nbsp;·&nbsp; Surigao City, Philippines</div>
+    <h1>Hi, I'm <span class="accent">Neil Jun</span>.<br>I build AI automation and GoHighLevel systems.</h1>
+    <p class="hero-desc">I connect n8n, GoHighLevel, OpenAI and business APIs so enquiries get answered, leads reach the CRM and follow-up runs on its own. Open to remote roles, automation agencies and GoHighLevel projects.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Let's Work Together &rarr;</a>
-      <a href="#projects" class="btn btn-outline">See My Work</a>
+      <a href="#projects" class="btn btn-primary">View My Work &rarr;</a>
+      <a href="Neil_Jun_Maglunsod_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">6+</div>
-        <div class="stat-label">Projects Built</div>
+        <div class="stat-num">12</div>
+        <div class="stat-label">Active n8n Workflows</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Live Systems</div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">AI Messenger Assistants Documented</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">2+</div>
-        <div class="stat-label">Business Clients</div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Languages: Bisaya, Tagalog, English</div>
       </div>
     </div>
+    <p class="stat-note">Workflow count from my n8n account, November 2026.</p>
   </div>
   <div class="scroll-hint">Scroll</div>
 </section>
@@ -665,32 +713,32 @@
     <div class="about-grid fade-in">
       <div class="about-text">
         <div class="section-tag">About Me</div>
-        <h2>Turning manual work into intelligent automation</h2>
+        <h2>Automation built around real business operations</h2>
         <div class="gold-line"></div>
-        <p>I'm Neil Jun Maglunsod, an AI automation specialist based in Surigao City, Philippines. I work with clients who are tired of repetitive, time-consuming tasks and want smart systems that run on autopilot.</p>
-        <p>My background spans workflow automation, AI/ML integrations, and API engineering. I bridge the gap between cutting-edge AI tools and practical business needs — delivering solutions that are powerful yet easy to maintain.</p>
-        <p>When I'm not building automations, I'm keeping up with the latest in the AI space so my clients always get the best tools available.</p>
+        <p>I'm Neil Jun Maglunsod, an AI automation and GoHighLevel specialist in Surigao City, Philippines, with a BS in Electronics Engineering. I build the workflows behind enquiries, bookings and follow-up, mostly in n8n and GoHighLevel.</p>
+        <p>My work comes from real small-business operations: an apartelle, a bookkeeping practice and a manpower agency. That means handling mixed Bisaya, Tagalog and English messages, incomplete details and the cases where an AI reply needs a safeguard.</p>
+        <p>For custom tools, I build web apps through AI-assisted development with Claude Code. I state what is live and what is still in progress, so you can judge the work as it really is.</p>
         <div style="margin-top: 1.75rem;">
-          <a href="#contact" class="btn btn-primary">Work With Me &rarr;</a>
+          <a href="#projects" class="btn btn-primary">See the Projects &rarr;</a>
         </div>
       </div>
       <div>
         <div class="section-tag">Tools &amp; Technologies</div>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">What I work with</p>
-        <div class="skills-grid">
-          <div class="skill-item"><span class="skill-dot"></span>Make (Integromat)</div>
-          <div class="skill-item"><span class="skill-dot"></span>n8n</div>
-          <div class="skill-item"><span class="skill-dot"></span>Zapier</div>
-          <div class="skill-item"><span class="skill-dot"></span>OpenAI API</div>
-          <div class="skill-item"><span class="skill-dot"></span>Claude API</div>
-          <div class="skill-item"><span class="skill-dot"></span>LangChain</div>
-          <div class="skill-item"><span class="skill-dot"></span>Airtable</div>
-          <div class="skill-item"><span class="skill-dot"></span>Notion API</div>
-          <div class="skill-item"><span class="skill-dot"></span>Python</div>
-          <div class="skill-item"><span class="skill-dot"></span>JavaScript</div>
-          <div class="skill-item"><span class="skill-dot"></span>REST APIs &amp; Webhooks</div>
-          <div class="skill-item"><span class="skill-dot"></span>Prompt Engineering</div>
-        </div>
+        <p class="skills-note">Tools used in the projects on this site.</p>
+        <ul class="skills-grid" style="list-style:none;">
+          <li class="skill-item"><span class="skill-dot"></span>n8n</li>
+          <li class="skill-item"><span class="skill-dot"></span>GoHighLevel</li>
+          <li class="skill-item"><span class="skill-dot"></span>CRM Automation</li>
+          <li class="skill-item"><span class="skill-dot"></span>OpenAI API</li>
+          <li class="skill-item"><span class="skill-dot"></span>REST APIs</li>
+          <li class="skill-item"><span class="skill-dot"></span>Webhooks</li>
+          <li class="skill-item"><span class="skill-dot"></span>Facebook Graph API &amp; Messenger</li>
+          <li class="skill-item"><span class="skill-dot"></span>Google Calendar &amp; Sheets</li>
+          <li class="skill-item"><span class="skill-dot"></span>Prompt Engineering</li>
+          <li class="skill-item"><span class="skill-dot"></span>JavaScript</li>
+          <li class="skill-item"><span class="skill-dot"></span>Node.js &amp; Next.js</li>
+          <li class="skill-item"><span class="skill-dot"></span>MongoDB &amp; Supabase</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -701,57 +749,45 @@
   <div class="container">
     <div class="fade-in">
       <div class="section-tag">What I Do</div>
-      <h2>Services built for real business impact</h2>
-      <p class="section-sub">From automating repetitive tasks to deploying custom AI assistants, I deliver end-to-end solutions tailored to your specific workflow.</p>
+      <h2>Four services I can show working</h2>
+      <p class="section-sub">Each service below links to a project that uses it.</p>
     </div>
     <div class="services-grid fade-in">
       <div class="service-card">
-        <div class="service-icon">⚙️</div>
+        <div class="service-icon" aria-hidden="true">⚙️</div>
         <h3>Workflow Automation</h3>
-        <p>Eliminate repetitive manual tasks by connecting your apps and automating multi-step processes — from data entry to report generation, fully hands-free.</p>
+        <p>Multi-step n8n workflows with webhook and scheduled triggers, conditional routing, data syncing and error notifications.</p>
         <div class="service-tags">
-          <span class="tag">Make</span><span class="tag">n8n</span><span class="tag">Zapier</span><span class="tag">Webhooks</span>
+          <span class="tag">n8n</span><span class="tag">Webhooks</span><span class="tag">Schedules</span><span class="tag">Error Alerts</span>
         </div>
+        <p class="service-proof">See it in: <a href="case-study-jj-apartelle.html">J&amp;J Apartelle</a></p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🤖</div>
-        <h3>AI Chatbots &amp; Assistants</h3>
-        <p>Custom AI chatbots trained on your business data — for customer support, internal Q&amp;A, lead qualification, or any role that benefits from intelligent, instant responses.</p>
+        <div class="service-icon" aria-hidden="true">📇</div>
+        <h3>GoHighLevel CRM</h3>
+        <p>Contact capture, tags, pipelines and opportunities, connected to booking calendars, email follow-up and outside tools through n8n and the GoHighLevel API.</p>
         <div class="service-tags">
-          <span class="tag">OpenAI</span><span class="tag">Claude</span><span class="tag">RAG</span><span class="tag">LangChain</span>
+          <span class="tag">GoHighLevel</span><span class="tag">Pipelines</span><span class="tag">Follow-up</span><span class="tag">Calendars</span>
         </div>
+        <p class="service-proof">See it in: <a href="case-study-bbm-ghl-lead-capture.html">BBM Messenger to GoHighLevel</a> · <a href="case-study-ghl-recruitment.html">GHL Recruitment</a></p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🔗</div>
-        <h3>API &amp; App Integrations</h3>
-        <p>Connect tools that don't talk to each other. I build custom API integrations so your CRM, project manager, email, and other tools work as one unified system.</p>
+        <div class="service-icon" aria-hidden="true">🤖</div>
+        <h3>AI Chatbots</h3>
+        <p>Facebook Messenger assistants that answer common questions, collect details step by step and hand sensitive cases to a person, using rules written for the business.</p>
         <div class="service-tags">
-          <span class="tag">REST APIs</span><span class="tag">Python</span><span class="tag">Airtable</span><span class="tag">Notion</span>
+          <span class="tag">OpenAI</span><span class="tag">Messenger</span><span class="tag">Prompt Engineering</span><span class="tag">Human Handoff</span>
         </div>
+        <p class="service-proof">See it in: <a href="case-study-bbm-ghl-lead-capture.html">BBM Messenger to GoHighLevel</a></p>
       </div>
       <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h3>AI-Powered Data Processing</h3>
-        <p>Transform raw data into structured insights automatically. I build pipelines that extract, classify, summarize, and route information using AI — at scale.</p>
+        <div class="service-icon" aria-hidden="true">🔗</div>
+        <h3>API Integrations</h3>
+        <p>REST API and webhook connections between the tools a business already uses, such as Facebook, GoHighLevel, Google Calendar and Telegram.</p>
         <div class="service-tags">
-          <span class="tag">GPT-4o</span><span class="tag">Pipelines</span><span class="tag">Airtable</span><span class="tag">Sheets</span>
+          <span class="tag">REST APIs</span><span class="tag">Webhooks</span><span class="tag">Graph API</span><span class="tag">JSON</span>
         </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">✍️</div>
-        <h3>AI Content Automation</h3>
-        <p>Automate content drafting, social media posting, email campaigns, and SEO workflows with AI — maintaining your voice while saving hours every week.</p>
-        <div class="service-tags">
-          <span class="tag">GPT-4o</span><span class="tag">Make</span><span class="tag">Prompt Engineering</span>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🧠</div>
-        <h3>AI Strategy Consulting</h3>
-        <p>Not sure where to start with AI? I'll audit your current workflow, identify high-leverage automation opportunities, and give you a clear roadmap to implement them.</p>
-        <div class="service-tags">
-          <span class="tag">Workflow Audit</span><span class="tag">Roadmap</span><span class="tag">Implementation</span>
-        </div>
+        <p class="service-proof">See it in: <a href="case-study-jj-apartelle.html">J&amp;J Apartelle</a></p>
       </div>
     </div>
   </div>
@@ -762,64 +798,108 @@
   <div class="container">
     <div class="fade-in">
       <div class="section-tag">My Work</div>
-      <h2>Recent projects</h2>
-      <p class="section-sub">A selection of automation systems and AI tools I've built for real clients and personal projects.</p>
+      <h2>Projects and case studies</h2>
+      <p class="section-sub">Each project shows the problem, the solution and the tools used, with its current status marked.</p>
     </div>
     <div class="projects-grid fade-in">
-      <div class="project-card featured">
+      <article class="project-card featured">
         <div class="project-header">
-          <div class="project-emoji">🤖</div>
-          <a href="case-study-jj-apartelle.html" class="project-link live-real">Read case study &rarr;</a>
+          <div class="project-emoji" aria-hidden="true">🤖</div>
+          <span class="project-link status">Active in n8n</span>
         </div>
         <div class="project-body">
           <span class="featured-badge">Featured</span>
           <h3 style="margin-top:0.7rem;">AI Comment-to-Booking Automation</h3>
           <div class="project-client">J&amp;J Apartelle — Surigao City</div>
-          <p>A 24/7 automation that reads Facebook comments in Bisaya &amp; Taglish, tells booking questions apart from reviews, and responds the right way. Booking inquiries get a public reply plus a private Messenger DM that hands off to an AI booking assistant; happy guests get a warm personalized thank-you. Built to fail safe, and live in production handling real guests.</p>
-          <div class="project-stack">
-            <span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Facebook Graph API</span><span class="tag">Messenger</span><span class="tag">Webhooks</span>
-          </div>
+          <dl class="project-facts">
+            <dt>Business problem</dt><dd>Facebook comments mixed booking questions with guest reviews in Bisaya and Taglish, and one generic auto-reply could not tell them apart.</dd>
+            <dt>Automation solution</dt><dd>n8n and OpenAI classify each comment. Booking questions get a public reply and a private Messenger message that opens the booking assistant, reviews get a personal thank-you, and everything else is left alone.</dd>
+          </dl>
+          <div class="project-stack" aria-label="Tools used"><span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Facebook Graph API</span><span class="tag">Messenger</span><span class="tag">Google Calendar</span><span class="tag">Webhooks</span></div>
+          <div class="project-actions"><a href="case-study-jj-apartelle.html">Read case study &rarr;</a></div>
         </div>
-      </div>
-      <div class="project-card">
+      </article>
+      <article class="project-card featured">
         <div class="project-header">
-          <div class="project-emoji">🏨</div>
-          <a href="https://jandj-apartelle.onrender.com" target="_blank" rel="noopener" class="project-link live-real">Live &rarr;</a>
+          <div class="project-emoji" aria-hidden="true">📇</div>
+          <span class="project-link status">Active in n8n</span>
         </div>
         <div class="project-body">
-          <h3>J&amp;J Apartelle — Management System</h3>
-          <p>Full property management system for a real apartelle business. Tracks 4 rooms, guest check-ins/outs, monthly income &amp; expenses, availability calendar, and reports. Currently live and used daily.</p>
-          <div class="project-stack">
-            <span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span>
-          </div>
+          <span class="featured-badge">Featured</span>
+          <h3 style="margin-top:0.7rem;">Messenger to GoHighLevel Lead Capture</h3>
+          <div class="project-client">BBM Bookkeeping Services — Surigao City</div>
+          <dl class="project-facts">
+            <dt>Business problem</dt><dd>Messenger enquiries about bookkeeping and BIR services needed quick answers, and the details had to reach the CRM for follow-up.</dd>
+            <dt>Automation solution</dt><dd>An AI assistant answers FAQs in Bisaya, Tagalog or English, collects lead details one at a time and shares a booking link. A check confirms the name and phone were really typed by the customer before the contact is saved to GoHighLevel.</dd>
+          </dl>
+          <div class="project-stack" aria-label="Tools used"><span class="tag">n8n</span><span class="tag">GoHighLevel</span><span class="tag">OpenAI</span><span class="tag">Messenger</span><span class="tag">LeadConnector API</span></div>
+          <div class="project-actions"><a href="case-study-bbm-ghl-lead-capture.html">Read case study &rarr;</a></div>
         </div>
-      </div>
-      <div class="project-card">
+      </article>
+      <article class="project-card">
         <div class="project-header">
-          <div class="project-emoji">💰</div>
-          <span class="project-link">Live</span>
+          <div class="project-emoji" aria-hidden="true">🧑‍💼</div>
+          <span class="project-link status">Built in n8n</span>
+        </div>
+        <div class="project-body">
+          <h3>GHL Recruitment Automation</h3>
+          <div class="project-client">Colorado General Services — Surigao City</div>
+          <dl class="project-facts">
+            <dt>Business problem</dt><dd>Job applicants asked the same questions on Messenger in three languages, and their details stayed buried in chat threads.</dd>
+            <dt>Automation solution</dt><dd>An n8n and OpenAI assistant answers in English, Tagalog or Bisaya from a Google Docs knowledge base and sends every applicant to a GoHighLevel application form.</dd>
+          </dl>
+          <div class="project-stack" aria-label="Tools used"><span class="tag">GoHighLevel</span><span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Messenger</span><span class="tag">Google Docs</span></div>
+          <div class="project-actions"><a href="case-study-ghl-recruitment.html">Read case study &rarr;</a></div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-header">
+          <div class="project-emoji" aria-hidden="true">🏨</div>
+          <a href="https://jandj-apartelle.onrender.com" target="_blank" rel="noopener" class="project-link live-real">Live app (login) &rarr;</a>
+        </div>
+        <div class="project-body">
+          <h3>J&amp;J Apartelle Management System</h3>
+          <div class="project-client">J&amp;J Apartelle — Surigao City</div>
+          <dl class="project-facts">
+            <dt>Business problem</dt><dd>Rooms, guests, income and expenses for a 4-unit apartelle needed to be tracked in one place.</dd>
+            <dt>Automation solution</dt><dd>A web app with bookings, guest records, an availability calendar, income and expense tracking, and reports.</dd>
+          </dl>
+          <div class="project-stack" aria-label="Tools used"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span></div>
+          <div class="project-actions"><a href="case-study-jj-apartelle.html#management-system">Read more &rarr;</a></div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-header">
+          <div class="project-emoji" aria-hidden="true">💰</div>
+          <span class="project-link status">In development</span>
         </div>
         <div class="project-body">
           <h3>Payroll Management App</h3>
-          <p>Payroll management system built for Colorado General Services. Handles employee payroll processing and records.</p>
-          <div class="project-stack">
-            <span class="tag">Next.js</span><span class="tag">Supabase</span>
-          </div>
+          <div class="project-client">Colorado General Services</div>
+          <dl class="project-facts">
+            <dt>Business problem</dt><dd>Philippine payroll means wage orders, holiday premiums and SSS, PhilHealth and Pag-IBIG deductions, which are error-prone to compute by hand.</dd>
+            <dt>Automation solution</dt><dd>A Next.js and Supabase app with a tested gross-to-net payroll engine and a payslip generator that produces PDFs.</dd>
+          </dl>
+          <div class="project-stack" aria-label="Tools used"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Drizzle ORM</span><span class="tag">Vitest</span></div>
+          <div class="project-actions"><a href="case-study-payroll-app.html">Read case study &rarr;</a></div>
         </div>
-      </div>
-      <div class="project-card">
+      </article>
+      <article class="project-card">
         <div class="project-header">
-          <div class="project-emoji">📒</div>
-          <span class="project-link">Live</span>
+          <div class="project-emoji" aria-hidden="true">📒</div>
+          <span class="project-link status">v1 deployed · v2 in progress</span>
         </div>
         <div class="project-body">
           <h3>Bookkeeping App</h3>
-          <p>Bookkeeping and financial tracking application built for small businesses in the Philippines.</p>
-          <div class="project-stack">
-            <span class="tag">Claude Code</span><span class="tag">JavaScript</span>
-          </div>
+          <div class="project-client">BBM Bookkeeping Services</div>
+          <dl class="project-facts">
+            <dt>Business problem</dt><dd>Clients, invoices, payments and expenses needed one system instead of separate records.</dd>
+            <dt>Automation solution</dt><dd>A web app covering clients, invoices, payments and expenses, with a profit and loss dashboard and PDF invoices. A newer Next.js and Supabase version is in progress.</dd>
+          </dl>
+          <div class="project-stack" aria-label="Tools used"><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Next.js</span><span class="tag">Supabase</span></div>
+          <div class="project-actions"><a href="case-study-bookkeeping-app.html">Read case study &rarr;</a></div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -830,54 +910,84 @@
     <div class="fade-in">
       <div class="section-tag">Get In Touch</div>
       <h2>Let's build something together</h2>
-      <p class="section-sub">Have a workflow to automate or an AI idea to explore? I'd love to hear about it. I'll get back to you within 24 hours.</p>
+      <p class="section-sub">Hiring for an automation role, or have a workflow to build? Send me the details and I'll get back to you within 24 hours.</p>
     </div>
     <div class="contact-grid fade-in">
       <div class="contact-info">
         <div class="contact-item">
-          <div class="contact-icon">✉️</div>
+          <div class="contact-icon" aria-hidden="true">✉️</div>
           <div>
             <div class="contact-label">Email</div>
             <a href="mailto:neiljunmaglunsod@gmail.com">neiljunmaglunsod@gmail.com</a>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">📍</div>
+          <div class="contact-icon" aria-hidden="true">📍</div>
           <div>
             <div class="contact-label">Location</div>
             <span>Surigao City, Philippines</span>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">🟢</div>
+          <div class="contact-icon" aria-hidden="true">🟢</div>
           <div>
             <div class="contact-label">Availability</div>
-            <span>Open to new projects</span>
+            <span>Open to remote roles and projects</span>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">💬</div>
+          <div class="contact-icon" aria-hidden="true">💬</div>
           <div>
             <div class="contact-label">WhatsApp</div>
             <a href="https://wa.me/639103013416?text=Hi%20Neil%2C%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20working%20with%20you." target="_blank" rel="noopener">Message me &rarr;</a>
           </div>
         </div>
-      </div>
-      <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-        <div class="form-row">
-          <input type="text"  name="name"  placeholder="Your Name"      required>
-          <input type="email" name="email" placeholder="Email Address"  required>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">🔗</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/neiljunmaglunsod/" target="_blank" rel="noopener">View my profile &rarr;</a>
+          </div>
         </div>
-        <input type="text" name="subject" placeholder="Subject (e.g. I need a chatbot for my business)">
-        <textarea name="message" placeholder="Tell me about your project — what do you want to automate?" required></textarea>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📄</div>
+          <div>
+            <div class="contact-label">Resume</div>
+            <a href="Neil_Jun_Maglunsod_Resume.pdf" download>Download PDF &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <form id="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" type="text" name="name" autocomplete="name" maxlength="120" required aria-describedby="f-name-err">
+            <div class="field-error" id="f-name-err"></div>
+          </div>
+          <div class="field">
+            <label for="f-email">Email address</label>
+            <input id="f-email" type="email" name="email" autocomplete="email" maxlength="200" required aria-describedby="f-email-err">
+            <div class="field-error" id="f-email-err"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-subject">Subject <span class="optional">(optional)</span></label>
+          <input id="f-subject" type="text" name="subject" maxlength="200">
+        </div>
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" maxlength="5000" required aria-describedby="f-message-err" placeholder="Tell me about the role or what you want to automate."></textarea>
+          <div class="field-error" id="f-message-err"></div>
+        </div>
         <button type="submit" class="btn btn-primary" style="width: fit-content;" id="submit-btn">Send Message &rarr;</button>
-        <p class="form-note" id="form-status"></p>
+        <p class="form-note" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
 </section>
+</main>
 
 <!-- Footer -->
 <footer>
@@ -888,6 +998,7 @@
       <a href="https://wa.me/639103013416" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.linkedin.com/in/neiljunmaglunsod/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/neiljunmaglunsod-rgb" target="_blank" rel="noopener">GitHub</a>
+      <a href="Neil_Jun_Maglunsod_Resume.pdf" download>Resume</a>
     </div>
   </div>
 </footer>
@@ -898,13 +1009,15 @@
   const mobileMenu = document.getElementById('mobile-menu');
 
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
   });
 
   function closeMobile() {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
   }
 
   // Scroll-triggered fade-in
@@ -936,40 +1049,88 @@
 
   sections.forEach(s => scrollSpy.observe(s));
 
-  // Contact form — submits to Netlify Forms via AJAX, keeps in-page confirmation
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form   = e.target;
-    const btn    = document.getElementById('submit-btn');
-    const status = document.getElementById('form-status');
-    btn.disabled    = true;
-    btn.textContent = 'Sending…';
+  // Contact form
+  // A success message appears only after a destination confirms it stored the message:
+  //  - Netlify Forms answers with a 2xx status, or
+  //  - the n8n webhook answers with JSON containing { "messageSaved": true }.
+  const WEBHOOK_URL = 'https://n8n-q6ls.srv1820828.hstgr.cloud/webhook/portfolio-lead';
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('submit-btn');
+  const statusEl = document.getElementById('form-status');
+  const rules = [
+    ['f-name', v => v.trim() ? '' : 'Please enter your name.'],
+    ['f-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.'],
+    ['f-message', v => v.trim().length >= 10 ? '' : 'Please write a message of at least 10 characters.']
+  ];
 
-    const data = new URLSearchParams(new FormData(form)).toString();
-    fetch('https://n8n-q6ls.srv1820828.hstgr.cloud/webhook/portfolio-lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: data
-    }).catch(() => {});
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: data
-    })
-    .then(() => {
-      status.textContent = '✓ Message sent! I’ll get back to you within 24 hours.';
-      status.style.color = 'var(--gold)';
-      form.reset();
-    })
-    .catch(() => {
-      status.textContent = '✗ Something went wrong. Please email me directly instead.';
-      status.style.color = '#e07a5f';
-    })
-    .finally(() => {
-      btn.disabled    = false;
-      btn.textContent = 'Send Message →';
-    });
+  function validateField(id, rule) {
+    const input = document.getElementById(id);
+    const message = rule(input.value);
+    document.getElementById(id + '-err').textContent = message;
+    if (message) input.setAttribute('aria-invalid', 'true');
+    else input.removeAttribute('aria-invalid');
+    return !message;
   }
+
+  rules.forEach(([id, rule]) => {
+    document.getElementById(id).addEventListener('blur', e => { if (e.target.value) validateField(id, rule); });
+  });
+
+  function postWithTimeout(url, body) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+      signal: controller.signal
+    }).finally(() => clearTimeout(timer));
+  }
+
+  async function webhookSavedMessage(response) {
+    if (!response.ok) return false;
+    try { return (await response.json()).messageSaved === true; }
+    catch (err) { return false; }
+  }
+
+  function showFailure(data) {
+    const subject = encodeURIComponent(data.get('subject') || 'Portfolio enquiry');
+    const body = encodeURIComponent(data.get('message') + '\n\n' + data.get('name'));
+    statusEl.style.color = '#f0957c';
+    statusEl.innerHTML = 'Your message could not be sent. Your text is still in the form, or you can <a href="mailto:neiljunmaglunsod@gmail.com?subject=' + subject + '&body=' + body + '">send it by email</a>.';
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    const results = rules.map(([id, rule]) => validateField(id, rule));
+    if (results.includes(false)) {
+      document.getElementById(rules[results.indexOf(false)][0]).focus();
+      return;
+    }
+    const data = new FormData(form);
+    if (data.get('bot-field')) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    const body = new URLSearchParams(data).toString();
+    const [netlify, webhook] = await Promise.allSettled([
+      postWithTimeout('/', body),
+      postWithTimeout(WEBHOOK_URL, body)
+    ]);
+    const stored = (netlify.status === 'fulfilled' && netlify.value.ok)
+      || (webhook.status === 'fulfilled' && await webhookSavedMessage(webhook.value));
+
+    if (stored) {
+      statusEl.style.color = 'var(--gold)';
+      statusEl.textContent = 'Message sent. I\u2019ll get back to you within 24 hours.';
+      form.reset();
+    } else {
+      showFailure(data);
+    }
+    btn.disabled = false;
+    btn.textContent = 'Send Message \u2192';
+  });
 </script>
 
 </body>

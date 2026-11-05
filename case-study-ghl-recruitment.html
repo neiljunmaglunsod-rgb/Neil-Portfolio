@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHL Recruitment Automation Case Study | Neil Jun Maglunsod</title>
+<meta name="description" content="An n8n and OpenAI Messenger assistant for a manpower agency that answers job applicants in English, Tagalog or Bisaya and sends them to a GoHighLevel application form.">
+<link rel="canonical" href="https://neiljun-automation.netlify.app/case-study-ghl-recruitment.html">
+<meta name="theme-color" content="#0b0b0c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GHL Recruitment Automation Case Study | Neil Jun Maglunsod">
+<meta property="og:description" content="An n8n and OpenAI Messenger assistant for a manpower agency that answers job applicants in English, Tagalog or Bisaya and sends them to a GoHighLevel application form.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23e4b23c'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0c;
+    --bg-2:#0f0f11;
+    --card:#141416;
+    --card-2:#17171a;
+    --border:#26262b;
+    --border-2:#33333a;
+    --text:#eeeee9;
+    --muted:#9a9a94;
+    --muted-2:#9a9a94;
+    --gold:#e4b23c;
+    --gold-soft:#caa04a;
+    --gold-dim:rgba(228,178,60,0.12);
+    --green:#4caf72;
+    --r:14px;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;letter-spacing:-0.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);display:inline-block}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,11,12,0.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:'Sora',sans-serif;font-weight:700;font-size:19px}
+  .brand span{color:var(--gold)}
+  .back{color:var(--muted);font-size:14px;font-weight:500;transition:color .2s}
+  .back:hover{color:var(--gold)}
+
+  /* hero */
+  header{padding:72px 0 40px;border-bottom:1px solid var(--border)}
+  .status{
+    display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+    font-size:13px;color:var(--muted);font-weight:500;
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(76,175,114,0.15)}
+  h1{font-size:clamp(2.1rem,6vw,3.6rem);font-weight:800;margin:20px 0 8px}
+  .client{font-size:clamp(1rem,2.4vw,1.25rem);color:var(--gold-soft);font-weight:600;font-family:'Sora',sans-serif}
+  .lede{color:var(--muted);font-size:1.08rem;max-width:640px;margin-top:20px}
+
+  /* facts */
+  .facts{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;
+  }
+  .fact{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+  .fact .k{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+  .fact .v{font-family:'Sora',sans-serif;font-weight:600;font-size:15px;margin-top:6px}
+
+  /* sections */
+  section{padding:56px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;margin:16px 0 20px}
+  section p{color:var(--muted);max-width:680px;margin-bottom:16px}
+  section p strong{color:var(--text);font-weight:600}
+
+  /* flow */
+  .flow{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+  .step{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+    padding:18px 20px;position:relative;
+  }
+  .step .num{
+    flex:none;width:30px;height:30px;border-radius:9px;
+    background:var(--gold-dim);color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:14px;
+  }
+  .step .body h3{font-size:16px;font-weight:600;margin-bottom:3px}
+  .step .body p{font-size:14.5px;margin:0;color:var(--muted)}
+
+  /* branch cards */
+  .branch{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .bcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;border-top:2px solid var(--border-2)}
+  .bcard.book{border-top-color:var(--gold)}
+  .bcard.review{border-top-color:var(--green)}
+  .bcard.other{border-top-color:var(--muted-2)}
+  .bcard .tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--muted-2)}
+  .bcard h3{font-size:16px;font-weight:600;margin:8px 0}
+  .bcard p{font-size:14px;color:var(--muted);margin:0}
+
+  /* highlights */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .hl{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+  .hl h3{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--text)}
+  .hl p{font-size:14px;color:var(--muted);margin:0}
+
+  /* result stats */
+  .rstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  .rstat{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;text-align:center}
+  .rstat .big{font-family:'Sora',sans-serif;font-weight:800;font-size:1.6rem;color:var(--gold)}
+  .rstat .lbl{font-size:13px;color:var(--muted);margin-top:6px}
+
+  /* tech */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .pill{
+    font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;
+    background:var(--gold-dim);color:var(--gold);border:1px solid rgba(228,178,60,0.25);
+  }
+
+  /* cta */
+  .cta{text-align:center;padding:72px 24px}
+  .cta h2{margin-bottom:14px}
+  .cta p{margin:0 auto 26px;color:var(--muted)}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    font-family:'Sora',sans-serif;font-weight:600;font-size:15px;
+    padding:13px 24px;border-radius:10px;transition:transform .15s,opacity .2s;
+  }
+  .btn.primary{background:var(--gold);color:#1a1400}
+  .btn.ghost{border:1px solid var(--border-2);color:var(--text)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  footer{padding:34px 0;color:var(--muted-2);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  @media (max-width:760px){
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .branch{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+    .rstats{grid-template-columns:1fr}
+    header{padding:48px 0 32px}
+    section{padding:44px 0}
+  }
+
+  /* additions */
+  .skip-link{position:absolute;left:12px;top:-60px;z-index:50;background:var(--gold);color:#1a1400;padding:10px 14px;border-radius:8px;font-weight:600}
+  .skip-link:focus{top:10px}
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .dot.dev{background:var(--gold);box-shadow:0 0 0 4px var(--gold-dim)}
+  .step{align-items:flex-start}
+  .proof{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .proof .hl .btn{display:inline-block;margin-top:14px;font-size:14px;padding:10px 16px}
+  .note{font-size:14px;color:var(--muted);margin-top:18px}
+  a.inline{color:var(--gold);text-decoration:underline}
+  .draft{background:#3a2a00;color:#ffd978;padding:12px 24px;font-size:14px;text-align:center}
+  @media (max-width:760px){.proof{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="index.html" class="brand">Neil Jun<span>.</span></a>
+    <a href="index.html#projects" class="back">← Back to projects</a>
+  </div>
+</nav>
+<main id="main">
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Case Study · GoHighLevel · AI Chatbot</div>
+    <h1>GHL Recruitment Automation</h1>
+    <div class="client">Colorado General Services — Surigao City, Philippines</div>
+    <p class="lede">A Facebook Messenger assistant for a manpower and janitorial agency. It answers job seekers in their own language, explains open positions and requirements, and sends every applicant to a GoHighLevel application form, so applications reach the CRM instead of staying in chat threads.</p>
+    <div class="status"><span class="dot"></span> Built in n8n for the agency's Facebook page and GoHighLevel account</div>
+    <div class="facts"><div class="fact"><div class="k">Role</div><div class="v">Automation Developer</div></div><div class="fact"><div class="k">Business</div><div class="v">Manpower agency</div></div><div class="fact"><div class="k">Core stack</div><div class="v">n8n · OpenAI · GHL</div></div><div class="fact"><div class="k">Languages</div><div class="v">EN · Tagalog · Bisaya</div></div></div>
+  </div>
+</header>
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Business problem</div>
+  <h2>Applicants asked on Messenger, and applications got lost there</h2>
+  <p>The agency recruits company drivers and heavy equipment operators, and most applicants first contact it through its Facebook page. The same questions arrive every day, such as <strong>"Hiring pa mo?"</strong>, <strong>"Unsa'y requirements?"</strong> and <strong>"Unsaon pag-apply?"</strong>, in three languages and often outside office hours.</p>
+  <p>Answering by hand took staff time. Applicants who were told to send a resume by chat left their details buried in Messenger, with no single list of who had applied.</p>
+</div></section>
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Automation solution</div>
+  <h2>An AI front desk that hands applicants to the CRM</h2>
+  <p>An n8n workflow answers every Messenger enquiry with an OpenAI agent that works from a knowledge base document the agency maintains. Whenever someone shows interest in applying, the assistant always shares the GoHighLevel application form. Each submission is stored as a contact in the CRM.</p>
+  <div class="branch">
+    <div class="bcard book"><div class="tag">Wants to apply</div><h3>Requirements + GHL form</h3><p>Lists the documents needed and links the GoHighLevel application form. It never asks applicants to send a resume in chat.</p></div>
+    <div class="bcard review"><div class="tag">Client or quotation</div><h3>Routed to the office</h3><p>Service and quotation requests are pointed to the office contact details instead of being answered by the AI.</p></div>
+    <div class="bcard other"><div class="tag">Unknown question</div><h3>Passed to staff</h3><p>If the knowledge base has no answer, the assistant says staff will follow up rather than guessing.</p></div>
+  </div>
+</div></section>
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Workflow architecture</div>
+  <h2>How it works</h2>
+  <div class="flow"><div class="step"><div class="num">1</div><div class="body"><h3>Messenger webhook</h3><p>Each new page message reaches an n8n webhook. An If node answers Meta's webhook verification request.</p></div></div><div class="step"><div class="num">2</div><div class="body"><h3>Knowledge base</h3><p>A Google Docs node loads open positions, requirements and office details, so staff can update answers without editing the workflow.</p></div></div><div class="step"><div class="num">3</div><div class="body"><h3>AI agent</h3><p>An n8n AI Agent with an OpenAI chat model and per-sender memory replies in the applicant's language and applies the recruitment rules.</p></div></div><div class="step"><div class="num">4</div><div class="body"><h3>Reply and GoHighLevel form</h3><p>An HTTP request sends the reply through the Facebook Graph API. Applicants complete the GoHighLevel form, which creates the contact in the CRM.</p></div></div></div>
+  <p class="note">Steps follow the node order in the exported n8n workflow.</p>
+</div></section>
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Engineering details</div>
+  <h2>Guardrails for recruitment</h2>
+  <div class="grid2"><div class="hl"><h3>No promises the agency can't keep</h3><p>The prompt forbids promising a job, guaranteeing a salary or inventing details. Salary questions get the agency's own policy wording.</p></div><div class="hl"><h3>Knowledge base first</h3><p>The agent answers from the Google Doc first and falls back to fixed company information, which keeps answers consistent.</p></div><div class="hl"><h3>Strict application-link rule</h3><p>A priority rule makes sure the form link appears whenever application intent is detected, in English, Tagalog or Bisaya.</p></div><div class="hl"><h3>Same language back</h3><p>The assistant replies in the language the applicant used and only switches if they do.</p></div></div>
+</div></section>
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Tools used</div>
+  <h2>Stack</h2>
+  <div class="tags"><span class="pill">GoHighLevel</span><span class="pill">GHL Forms</span><span class="pill">n8n</span><span class="pill">n8n AI Agent</span><span class="pill">OpenAI API</span><span class="pill">Google Docs</span><span class="pill">Messenger Platform</span><span class="pill">Facebook Graph API</span><span class="pill">Webhooks</span><span class="pill">Prompt engineering</span></div>
+</div></section>
+<section class="reveal"><div class="wrap">
+  <div class="eyebrow">Screenshots &amp; demo</div>
+  <h2>See it working</h2>
+  <!-- NEIL: when ready, replace the two cards below with <img src="assets/..." alt="..."> and your video link. Remove applicant names and phone numbers first. -->
+  <div class="proof">
+    <div class="hl"><h3>Screenshots</h3><p>Messenger, workflow and GoHighLevel screenshots are being prepared with applicant details removed.</p></div>
+    <div class="hl"><h3>Demo video</h3><p>A recorded demo is being prepared. I can walk you through it on a call in the meantime.</p><a href="index.html#contact" class="btn ghost">Request a walkthrough</a></div>
+  </div>
+</div></section>
+<div class="cta reveal">
+  <div class="eyebrow" style="justify-content:center">Get in touch</div>
+  <h2>Need a system like this?</h2>
+  <p>I'm open to remote roles, automation agencies and GoHighLevel projects.</p>
+  <div class="btns">
+    <a href="index.html#contact" class="btn primary">Contact me →</a>
+    <a href="index.html#projects" class="btn ghost">See more projects</a>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Neil Jun Maglunsod — Built with care.</span>
+    <span>Surigao City, Philippines</span>
+  </div>
+</footer>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
